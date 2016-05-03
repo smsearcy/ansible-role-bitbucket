@@ -1,15 +1,6 @@
 ---
 # tasks file for hswong3i.bitbucket
 
-- name: apt-get install
-  apt:
-    name: "{{ item.name }}"
-    state: "{{ item.state }}"
-  with_items:
-    - { state: "latest", name: "ufw" }
-  notify: restart bitbucket
-  tags: hswong3i.bitbucket
-
 - name: create group
   group:
     name: "{{ bitbucket_user }}"
@@ -74,16 +65,5 @@
   service:
     name: "bitbucket"
     enabled: "yes"
-  notify: restart bitbucket
-  tags: hswong3i.bitbucket
-
-- name: enable incomming connection
-  ufw:
-    to_port: "{{ item.to_port }}"
-    proto: "{{ item.proto }}"
-    rule: "{{ item.rule }}"
-  with_items:
-    - { to_port: "{{ bitbucket_connector_port }}", proto: "tcp", rule: "allow" }
-    - { to_port: "{{ bitbucket_server_port }}", proto: "tcp", rule: "allow" }
   notify: restart bitbucket
   tags: hswong3i.bitbucket
