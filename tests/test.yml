@@ -4,7 +4,5 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - role: ansible-role-bitbucket
-      bitbucket_hash_salt: "BeiVawa2ongiegip"
-      bitbucket_pass: "ahle4Boo"
-      bitbucket_user: "bitbucket"
+    - hswong3i.java
+    - ansible-role-bitbucket
