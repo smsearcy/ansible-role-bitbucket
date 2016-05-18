@@ -1,9 +1,9 @@
 Ansible Role for BitBucket
 ==========================
 
-[![Build Status](https://travis-ci.org/pantarei/ansible-role-bitbucket.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-bitbucket)
-[![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-bitbucket.svg)](https://github.com/pantarei/ansible-role-bitbucket)
-[![GitHub license](https://img.shields.io/github/license/pantarei/ansible-role-bitbucket.svg)](https://github.com/pantarei/ansible-role-bitbucket/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/smsearcy/ansible-role-bitbucket.svg?branch=master)](https://travis-ci.org/smsearcy/ansible-role-bitbucket)
+[![GitHub tag](https://img.shields.io/github/tag/smsearcy/ansible-role-bitbucket.svg)](https://github.com/smsearcy/ansible-role-bitbucket)
+[![GitHub license](https://img.shields.io/github/license/smsearcy/ansible-role-bitbucket.svg)](https://github.com/smsearcy/ansible-role-bitbucket/blob/master/LICENSE)
 
 Ansible Role for Atlassian BitBucket Installation.
 
@@ -12,7 +12,7 @@ Requirements
 
 This role require Ansible 2.0 or higher.
 
-This role was designed for Ubuntu Server 14.04 LTS.
+This role was designed for RHEL/CentOS 7 (forked from a role designed for Ubuntu Server 14.04 LTS).
 
 Role Variables
 --------------
@@ -38,7 +38,7 @@ Role Variables
 <tr class="odd">
 <td>bitbucket_archive</td>
 <td>yes</td>
-<td><a href="https://github.com/pantarei/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td><a href="https://github.com/smsearcy/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td></td>
 <td>Download archive filename for cache during (re)install.</td>
 </tr>
@@ -52,7 +52,7 @@ Role Variables
 <tr class="odd">
 <td>bitbucket_checksum</td>
 <td>yes</td>
-<td><a href="https://github.com/pantarei/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td><a href="https://github.com/smsearcy/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td></td>
 <td>Download archive sha256 checksum for cache during (re)install.</td>
 </tr>
@@ -68,7 +68,7 @@ Role Variables
 <td>no</td>
 <td><code>null</code></td>
 <td></td>
-<td>Pass value as <code>path</code> to <a href="https://github.com/pantarei/ansible-role-bitbucket/blob/master/templates/usr/share/bitbucket/conf/server.xml.j2">template</a>.</td>
+<td>Pass value as <code>path</code> to <a href="https://github.com/smsearcy/ansible-role-bitbucket/blob/master/templates/usr/share/bitbucket/conf/server.xml.j2">template</a>.</td>
 </tr>
 <tr class="even">
 <td>bitbucket_gid</td>
@@ -80,7 +80,7 @@ Role Variables
 <tr class="odd">
 <td>bitbucket_hash_salt</td>
 <td>yes</td>
-<td><a href="https://github.com/pantarei/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td><a href="https://github.com/smsearcy/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td></td>
 <td>Specific password hash salt for sha512.</td>
 </tr>
@@ -108,7 +108,7 @@ Role Variables
 <tr class="odd">
 <td>bitbucket_jvm_support_recommended_args</td>
 <td>no</td>
-<td><a href="https://github.com/pantarei/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td><a href="https://github.com/smsearcy/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td></td>
 <td>Atlassian Support recommended JVM arguments.</td>
 </tr>
@@ -124,7 +124,7 @@ Role Variables
 <td>no</td>
 <td><code>null</code></td>
 <td></td>
-<td>Pass value as <code>proxyName</code> to <a href="https://github.com/pantarei/ansible-role-bitbucket/blob/master/templates/usr/share/bitbucket/conf/server.xml.j2">template</a>.</td>
+<td>Pass value as <code>proxyName</code> to <a href="https://github.com/smsearcy/ansible-role-bitbucket/blob/master/templates/usr/share/bitbucket/conf/server.xml.j2">template</a>.</td>
 </tr>
 <tr class="even">
 <td>bitbucket_scheme</td>
@@ -154,7 +154,7 @@ Role Variables
 <tr class="odd">
 <td>bitbucket_url</td>
 <td>yes</td>
-<td><a href="https://github.com/pantarei/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td><a href="https://github.com/smsearcy/ansible-role-bitbucket/blob/master/defaults/main.yml">defaults/main.yml</a></td>
 <td></td>
 <td>URL for download archive.</td>
 </tr>
@@ -178,17 +178,20 @@ Example Playbook
 
     - hosts: servers
       roles:
-        - { role: hswong3i.bitbucket }
+        - { role: smsearcy.bitbucket }
 
 License
 -------
 
--   Code released under [MIT](https://github.com/pantarei/ansible-role-bitbucket/blob/master/LICENSE)
+-   Code released under [MIT](https://github.com/smsearcy/ansible-role-bitbucket/blob/master/LICENSE)
 -   Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
 
 Author Information
 ------------------
 
+-   Scott Searcy
+    -   https://github.com/smsearcy
+    
 -   Wong Hoi Sing Edison
     -   <a href="https://twitter.com/hswong3i" class="uri" class="uri">https://twitter.com/hswong3i</a>
     -   <a href="https://github.com/hswong3i" class="uri" class="uri">https://github.com/hswong3i</a>
