@@ -12,7 +12,7 @@ Requirements
 
 This role require Ansible 2.0 or higher.
 
-This role was designed for RHEL/CentOS 7 (forked from a role designed for Ubuntu Server 14.04 LTS).
+This role is designed for RHEL/CentOS 7 (forked from ``hswong3i.bitbucket`` which was designed for Ubuntu Server 14.04 LTS).
 
 Role Variables
 --------------

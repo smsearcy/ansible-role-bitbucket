@@ -1,20 +1,17 @@
 ---
-# defaults file for hswong3i.bitbucket
+# defaults file for smsearcy.bitbucket
 
 # required variables
-bitbucket_gid: ~
-bitbucket_hash_salt: ~
-bitbucket_pass: ~
 bitbucket_uid: ~
 bitbucket_user: ~
 
 # optional variables with default
 bitbucket_archive: "atlassian-bitbucket-4.6.1.tar.gz"
-bitbucket_catalina: "/usr/share/bitbucket"
+bitbucket_catalina: "/opt/bitbucket"
 bitbucket_checksum: "sha256:c2c9207761152c29a7a3e032737cc51dcf4f8dd84491eb8f5665a8bffa78e938"
 bitbucket_connector_port: "7990"
 bitbucket_context_path: ~
-bitbucket_home: "/var/lib/bitbucket"
+bitbucket_home: "/home/bitbucket"
 bitbucket_jvm_maximum_memory: "1024m"
 bitbucket_jvm_minimum_memory: "512m"
 bitbucket_jvm_support_recommended_args: "-Datlassian.plugins.enable.wait=300"
