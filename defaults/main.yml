@@ -2,17 +2,17 @@
 # defaults file for smsearcy.bitbucket
 
 # required variables
-bitbucket_uid: ~
 bitbucket_user: ~
-bitbucket_version: "4.6.1"
+bitbucket_uid: ~
 
 # optional variables with default
+bitbucket_version: "4.6.1"
 bitbucket_archive: "atlassian-bitbucket-{{ bitbucket_version }}.tar.gz"
 bitbucket_install: "/opt/atlassian"
 bitbucket_catalina: "{{ bitbucket_install }}/atlassian-bitbucket-{{ bitbucket_version }}"
 bitbucket_connector_port: "7990"
 bitbucket_context_path: ~
-bitbucket_home: "/home/bitbucket"
+bitbucket_home: "/home/{{ bitbucket_user }}"
 bitbucket_jvm_maximum_memory: "1024m"
 bitbucket_jvm_minimum_memory: "512m"
 bitbucket_jvm_support_recommended_args: "-Datlassian.plugins.enable.wait=300"

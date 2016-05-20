@@ -14,9 +14,9 @@
 - name: unarchive package
   unarchive:
     copy: no
-    src: {{ bitbucket_url }}
-    dest: {{ bitbucket_install }}
-    creates: {{ bitbucket_catalina }}/bin/setenv.bat
+    src: "{{ bitbucket_url }}"
+    dest: "{{ bitbucket_install }}"
+    creates: "{{ bitbucket_catalina }}/bin/setenv.bat"
   notify: restart bitbucket
   tags: smsearcy.bitbucket
 
