@@ -1,51 +1,24 @@
 ---
-# tasks file for hswong3i.bitbucket
-
-- name: create group
-  group:
-    name: "{{ bitbucket_user }}"
-    gid: "{{ bitbucket_gid | default(None) or omit }}"
-  notify: restart bitbucket
-  tags: hswong3i.bitbucket
+# tasks file for smsearcy.bitbucket
 
 - name: create user
   user:
     name: "{{ bitbucket_user }}"
-    password: "{{ bitbucket_pass | password_hash('sha512', bitbucket_hash_salt) }}"
+    password: "*"
     home: "{{ bitbucket_home }}"
-    group: "{{ bitbucket_user }}"
-    uid: "{{ bitbucket_uid | default(None) or omit }}"
+    uid: "{{ bitbucket_uid | default(omit) }}"
     shell: "/bin/bash"
   notify: restart bitbucket
-  tags: hswong3i.bitbucket
-
-- name: prepare files
-  file:
-    path: "{{ item.path }}"
-    owner: "{{ item.owner }}"
-    group: "{{ item.group }}"
-    mode: "{{ item.mode }}"
-    state: "{{ item.state }}"
-  with_items:
-    - { path: "{{ bitbucket_catalina }}", owner: "{{ bitbucket_user }}", group: "{{ bitbucket_user }}", mode: "0755", state: "directory" }
-  notify: restart bitbucket
-  tags: hswong3i.bitbucket
-
-- name: download package
-  get_url:
-    url: "{{ bitbucket_url }}"
-    dest: "/tmp/{{ bitbucket_archive }}"
-    checksum: "{{ bitbucket_checksum }}"
-  tags: hswong3i.bitbucket
+  tags: smsearcy.bitbucket
 
 - name: unarchive package
-  shell: |
-    tar zxvf /tmp/{{ bitbucket_archive }} -C {{ bitbucket_catalina }} --strip-components=1
-    chown -Rf {{ bitbucket_user }}:{{ bitbucket_user }} {{ bitbucket_catalina }}
-  args:
-    creates: "{{ bitbucket_catalina }}/bin/start-bitbucket.sh"
+  unarchive:
+    copy: no
+    src: {{ bitbucket_url }}
+    dest: {{ bitbucket_install }}
+    creates: {{ bitbucket_catalina }}/bin/setenv.bat
   notify: restart bitbucket
-  tags: hswong3i.bitbucket
+  tags: smsearcy.bitbucket
 
 - name: copy templates
   template:
@@ -55,15 +28,15 @@
     group: "{{ item.group }}"
     mode: "{{ item.mode }}"
   with_items:
-    - { src: "etc/init.d/bitbucket.j2", dest: "/etc/init.d/bitbucket", owner: "root", group: "root", mode: "0755" }
-    - { src: "usr/share/bitbucket/bin/setenv.sh.j2", dest: "{{ bitbucket_catalina }}/bin/setenv.sh", owner: "{{ bitbucket_user }}", group: "{{ bitbucket_user }}", mode: "0644" }
-    - { src: "usr/share/bitbucket/conf/server.xml.j2", dest: "{{ bitbucket_catalina }}/conf/server.xml", owner: "{{ bitbucket_user }}", group: "{{ bitbucket_user }}", mode: "0644" }
+    - { src: "bitbucket.service.j2", dest: "/etc/systemd/system/bitbucket.service", owner: "root", group: "root", mode: "0644" }
+    - { src: "setenv.sh.j2", dest: "{{ bitbucket_catalina }}/bin/setenv.sh", owner: "root", group: "root", mode: "0644" }
+    - { src: "server.xml.j2", dest: "{{ bitbucket_home }}/shared/server.xml", owner: "{{ bitbucket_user }}", group: "{{ bitbucket_user }}", mode: "0644" }
   notify: restart bitbucket
-  tags: hswong3i.bitbucket
+  tags: smsearcy.bitbucket
 
 - name: enable service
   service:
     name: "bitbucket"
     enabled: "yes"
   notify: restart bitbucket
-  tags: hswong3i.bitbucket
+  tags: smsearcy.bitbucket

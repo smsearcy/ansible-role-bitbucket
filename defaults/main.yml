@@ -4,11 +4,12 @@
 # required variables
 bitbucket_uid: ~
 bitbucket_user: ~
+bitbucket_version: "4.6.1"
 
 # optional variables with default
-bitbucket_archive: "atlassian-bitbucket-4.6.1.tar.gz"
-bitbucket_catalina: "/opt/bitbucket"
-bitbucket_checksum: "sha256:c2c9207761152c29a7a3e032737cc51dcf4f8dd84491eb8f5665a8bffa78e938"
+bitbucket_archive: "atlassian-bitbucket-{{ bitbucket_version }}.tar.gz"
+bitbucket_install: "/opt/atlassian"
+bitbucket_catalina: "{{ bitbucket_install }}/atlassian-bitbucket-{{ bitbucket_version }}"
 bitbucket_connector_port: "7990"
 bitbucket_context_path: ~
 bitbucket_home: "/home/bitbucket"

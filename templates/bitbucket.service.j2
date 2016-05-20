@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+[Unit]
+Description=Atlassian Bitbucket Server Service
+After=syslog.target network.target
+ 
+[Service]
+Type=forking
+User={{ bitbucket_user }}
+ExecStart=/opt/atlassian-bitbucket-X.Y.Z/bin/start-bitbucket.sh
+ExecStop=/opt/atlassian-bitbucket-X.Y.Z/bin/stop-bitbucket.sh
+ 
+[Install]
+WantedBy=multi-user.target
